@@ -14,8 +14,7 @@ const methodLogger = (req, res, next) => {
 const home = (req, res) => res.send("home");
 const login = (req, res) => res.send("login");
 
-app.use(methodLogger);
-app.use(routerLogger);
+app.use(methodLogger, routerLogger);
 app.get("/",home);
 app.get("/login",login );
 
