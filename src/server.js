@@ -3,29 +3,19 @@ import express from "express";
 const PORT = 4000;
 const app = express();
 
-const logger = (req, res, next) => {
-    console.log(`${req.method} : ${req.url}`);
+const routerLogger = (req, res, next) => {
+    console.log("path: ", req.path);
     next();
 };
-const privateMiddleware = (req,res,next) => {
-    const url = req.url;
-    if (url === "/protected") {
-        return res.send("<h1>Not Allowed</h1>");
-    }
-    console.log("allowed, you may continue.")
+const methodLogger = (req, res, next) => {
+    console.log("method: ", req.method);
     next();
-}
-const handleHome = (req, res) => {
-    return res.send("I love middlewares");
 };
-const handleProtected = (req, res) => {
-    return res.send("Welcome to the private lounge");
-}
+const home = (req, res) => res.send("home");
+const login = (req, res) => res.send("login");
 
-app.use(logger);
-app.use(privateMiddleware);
-app.get("/",handleHome);
-app.get("/", handleProtected);
+app.get("/",methodLogger, routerLogger, home);
+app.get("/login", methodLogger, routerLogger, login )
 
 const handleListening = () => console.log(`server listening on port http://localhost:${PORT}`);
 app.listen(PORT, handleListening);
