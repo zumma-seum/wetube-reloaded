@@ -14,8 +14,10 @@ const methodLogger = (req, res, next) => {
 const home = (req, res) => res.send("home");
 const login = (req, res) => res.send("login");
 
-app.get("/",methodLogger, routerLogger, home);
-app.get("/login", methodLogger, routerLogger, login )
+app.use(methodLogger);
+app.use(routerLogger);
+app.get("/",home);
+app.get("/login",login );
 
 const handleListening = () => console.log(`server listening on port http://localhost:${PORT}`);
 app.listen(PORT, handleListening);
