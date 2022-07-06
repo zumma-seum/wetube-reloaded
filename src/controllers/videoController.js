@@ -6,17 +6,29 @@ const fakeUser = {
 export const trending = (req, res) => {
     const videos = [
         {
-            title: "Hello",
+            title: "first Hello",
+            rating: 5,
+            comments: 2,
+            createdAt: "10 minutes ago",
+            views: 59,
+            id: 1,
         },
         {
-            title: "good",
+            title: "second good",
+            rating: 3,
+            comments: 1,
+            createdAt: "1 minutes ago",
+            views: 10,
+            id: 2,
         },
         {
-            title: "whatsup",
+            title: "third go",
+            rating: 5,
+            comments: 0,
+            createdAt: "just right now",
+            views: 0,
+            id: 3,
         },
-        {
-            title: "happy",
-        }
     ];
     return res.render("home", {pageTitle:"Home", videos});
 }
