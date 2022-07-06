@@ -4,7 +4,21 @@ const fakeUser = {
 }
 
 export const trending = (req, res) => {
-    return res.render("home", {pageTitle:"Home", fakeUser});
+    const videos = [
+        {
+            title: "Hello",
+        },
+        {
+            title: "good",
+        },
+        {
+            title: "whatsup",
+        },
+        {
+            title: "happy",
+        }
+    ];
+    return res.render("home", {pageTitle:"Home", videos});
 }
 export const see = (req, res) => {
     return res.render("watch", {pageTitle:"Watch"});
